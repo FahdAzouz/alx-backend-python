@@ -112,7 +112,10 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     def test_has_license(self, repo: Dict, key: str, expected: bool) -> None:
         '''Test has license function'''
-        self.assertEqual(GithubOrgClient("google").has_license(repo, key), expected)
+        self.assertEqual(
+            GithubOrgClient("google").has_license(repo, key),
+            expected
+        )
 
 
 @parameterized_class([
