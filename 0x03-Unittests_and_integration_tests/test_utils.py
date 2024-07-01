@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
-'''Unit test module 0'''
-from unittest import TestCase
-import pytest
-from parametrized import parametrized
+"""A module for testing the utils module.
+"""
+import unittest
 from typing import Dict, Tuple, Union
+from unittest.mock import patch, Mock
+from parameterized import parameterized
+
+from utils import (
+    access_nested_map,
+    get_json,
+    memoize,
+)
 
 
-access_nested_map = __import__("utils").access_nested_map
-
-
-class TestAccessNestedMap(TestCase):
-    '''Test function accessNestedMap'''
-
-    @parametrized.expand([
-        ({"a", 1}, ("a"), 1),
-        ({"a": {"b": 2}}, ("a",), 2),
-        ({"a": {"b": 2}}, ("a", "b"), 2)
+class TestAccessNestedMap(unittest.TestCase):
+    """Tests the `access_nested_map` function."""
+    @parameterized.expand([
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), {"b": 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
     def test_access_nested_map(
             self,
