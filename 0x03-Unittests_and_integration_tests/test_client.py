@@ -36,8 +36,8 @@ class TestGithubOrgClient(unittest.TestCase):
             "https://api.github.com/orgs/{}".format(org)
         )
 
-    def test_public_repo_url(self) -> None:
-        '''Tests the org method'''
+    def test_public_repos_url(self) -> None:
+        """Tests the `_public_repos_url` property."""
         with patch(
                 "client.GithubOrgClient.org",
                 new_callable=PropertyMock,
@@ -47,5 +47,5 @@ class TestGithubOrgClient(unittest.TestCase):
             }
             self.assertEqual(
                 GithubOrgClient("google")._public_repos_url,
-                "https://api.github.com/users/google/repos"
+                "https://api.github.com/users/google/repos",
             )
