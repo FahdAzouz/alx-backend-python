@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 '''Unit test module 0'''
-
 from unittest import TestCase
 import pytest
 from parametrized import parametrized
-access_nested_map = __import__("utils").access_nested_map
 from typing import Dict, Tuple, Union
+
+
+access_nested_map = __import__("utils").access_nested_map
+
 
 class TestAccessNestedMap(TestCase):
     '''Test function accessNestedMap'''
-    
+
     @parametrized.expand([
         ({"a", 1}, ("a"), 1),
         ({"a": {"b": 2}}, ("a",), 2),
